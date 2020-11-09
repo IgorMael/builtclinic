@@ -4,7 +4,7 @@ class Patient < ApplicationRecord
   validates :cpf, presence: true, cpf: true, uniqueness: { case_sensitive: false }
 
   def cpf=(cpfnumber)
-    super(cpfnumber.gsub(/[\.-]/, ''))
+    super(cpfnumber.gsub(/[\.-]/, '')) if cpfnumber.present?
   end
 
 end
