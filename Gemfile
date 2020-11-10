@@ -28,6 +28,9 @@ gem 'jbuilder', '~> 2.7'
 # Add CPF related methods
 gem "cpf_cnpj"
 
+#better time validation
+gem 'validates_timeliness'
+
 #locale
 gem 'rails-i18n'
 
