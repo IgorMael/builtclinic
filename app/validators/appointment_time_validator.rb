@@ -5,6 +5,7 @@ class AppointmentTimeValidator < ActiveModel::EachValidator
     interval_range = Range.new(time.change(hour: 12, min: 0, sec: 0).to_i, time.change(hour: 12, min: 30, sec: 0).to_i)
 
     lunch_time = interval_range.step(30.minutes).map {|hour| Time.at(hour).to_s(:time)}
+    
     intervals = range.step(30.minutes).map {|hour| Time.at(hour).to_s(:time)}.difference(lunch_time)
       if options[:type] == 'end_time'
       record.errors.add(attribute, "Invalid appointment time") unless (value - 30.minutes).to_s(:time).in? intervals
