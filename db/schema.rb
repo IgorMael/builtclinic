@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_11_09_194218) do
     t.string "crm_uf"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["crm", "crm_uf"], name: "index_doctors_on_crm_and_crm_uf", unique: true
   end
 
   create_table "patients", force: :cascade do |t|
