@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Médicos</h1>
+
+
+<%= link_to 'Adicionar médico', new_doctor_path, class: 'right' %>
+
+<table class="responsive-table highlight centered">
+  <thead>
+    <tr>
+      <th colspan="4">Nome</th>
+      <th>CRM/UF</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @doctors %>
+  </tbody>
+</table>

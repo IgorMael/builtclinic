@@ -1,0 +1,20 @@
+<div class='row'>
+  <%= form_with(model: doctor, local: true, class: 'col s12') do |form| %>
+    <div class="row">
+      <div class="input-field col s6">
+        <%= form.text_field :name, class: "validate", required: true %>
+        <label for="doctor_name">Nome completo</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s4">
+        <%= form.text_field :crm, class: "validate", required: true %>
+        <label for="doctor_crm">CRM</label>
+      </div>
+      <div class="input-field col s2">
+        <%= form.text_field :crm_uf, class: "validate", required: true %>
+        <label for="doctor_crm_uf">CRM UF</label>
+      </div>
+    </div>
+  <% end %>
+</div>
