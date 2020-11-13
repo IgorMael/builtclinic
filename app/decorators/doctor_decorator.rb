@@ -4,4 +4,8 @@ class DoctorDecorator < Draper::Decorator
   def full_crm
     "#{object.crm}/#{object.crm_uf}"
   end
+
+  def title_name
+    "Dr. #{object.name}"
+  end
 end

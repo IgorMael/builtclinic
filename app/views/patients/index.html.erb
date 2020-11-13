@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pacientes</h1>
+
+<%= link_to 'Cadastrar paciente ', new_patient_path, class: 'right' %>
+
+<table class="responsive-table highlight centered">
+  <thead>
+    <tr>
+      <th colspan="4">Nome</th>
+      <th>Data de Nascimento</th>
+      <th>CPF</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @patients %>
+  </tbody>
+</table>

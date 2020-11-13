@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Appointments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Horário</th>
+      <th>Médico</th>
+      <th>Paciente</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @appointments %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Appointment', new_appointment_path %>

@@ -1,21 +1,23 @@
 <tr>
-  <td colspan="4"><%= doctor.name %></td>
-  <td><%= doctor.full_crm %></td>
+  <td><%= appointment.starts_at.strftime("%d/%m/%Y") %></td>
+  <td><%= appointment.starts_at.strftime("%H:%M") %> - <%= appointment.ends_at.strftime("%H:%M") %></td>
+  <td><%= appointment.doctor.decorate.title_name %></td>
+  <td><%= appointment.patient.name %></td>
   <td>
-    <%= link_to doctor_path(doctor), 
+    <%= link_to appointment_path(appointment), 
         class: 'btn waves-effect waves-light btn-small icon-button tooltipped', 
         data: { position: 'top', tooltip: 'Visualizar' } do %>
       <i class="material-icons">visibility</i>
     <% end %>
-    <%= link_to edit_doctor_path(doctor), 
+    <%= link_to edit_appointment_path(appointment), 
         class: 'btn waves-effect waves-light btn-small icon-button tooltipped', 
         data: { position: 'top', tooltip: 'Editar' } do %>
       <i class="material-icons">edit</i>
     <% end %>
-    <%= link_to doctor, method: :delete,
+    <%= link_to appointment, method: :delete,
         class: 'btn waves-effect waves-light btn-small icon-button tooltipped', 
         data: { position: 'top', tooltip: 'Excluir', confirm: 'Tem certeza?' } do %>
       <i class="material-icons">delete</i>
     <% end %>
   </td>
-</tr>
+<tr>

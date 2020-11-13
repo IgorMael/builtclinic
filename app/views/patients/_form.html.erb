@@ -1,0 +1,44 @@
+<div class="row">
+  <%= form_with(model: patient, local: true) do |form| %>
+    <% if patient.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+        <ul>
+          <% patient.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <div class="input-field col s6">
+        <%= form.text_field :name, class: "validate" ,required: true %>
+        <label for="patient_name">Nome completo</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s3 active">
+        <%= form.text_field :cpf, class: "validate", required: true %>
+        <label for="patient_cpf">CPF</label>
+      </div>
+      <div class="input-field col s3 active">
+        <%= form.date_field :birth_date, class: "validate ", required: true, value: Date.today %>
+        <label for="patient_birth_date" id='lol' class="active">Data de nascimento</label>
+      </div>
+    </div>
+
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  var element = document.getElementById("lol");
+  element.classList.add("active");
+  console.log('lol')
+</script>

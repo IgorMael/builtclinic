@@ -8,7 +8,8 @@ class Appointment < ApplicationRecord
   validates :doctor, presence: true
 
   def starts_at=(start_date)
+    start_date = Time.new(*start_date.sort.to_h.values.map(&:to_i)) if start_date.is_a? Hash
     super(start_date) if start_date.present?
-    ends_at = start_date + 30.minutes
+    self.ends_at = start_date + 30.minutes
   end
 end

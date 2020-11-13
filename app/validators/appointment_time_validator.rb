@@ -1,5 +1,6 @@
 class AppointmentTimeValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
+    return unless value
     time = Time.now
     range =  Range.new(time.change(hour: 8, min: 0, sec: 0).to_i, time.change(hour: 17, min: 30, sec: 0).to_i)
     interval_range = Range.new(time.change(hour: 12, min: 0, sec: 0).to_i, time.change(hour: 12, min: 30, sec: 0).to_i)
