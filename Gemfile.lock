@@ -42,6 +42,10 @@ GEM
       globalid (>= 0.3.6)
     activemodel (6.0.3.4)
       activesupport (= 6.0.3.4)
+    activemodel-serializers-xml (1.0.2)
+      activemodel (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (6.0.3.4)
       activemodel (= 6.0.3.4)
       activesupport (= 6.0.3.4)
@@ -76,6 +80,12 @@ GEM
     cpf_cnpj (0.5.0)
     crass (1.0.6)
     diff-lcs (1.4.4)
+    draper (4.0.1)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
+      activemodel-serializers-xml (>= 1.0)
+      activesupport (>= 5.0)
+      request_store (>= 1.0)
     erubi (1.9.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
@@ -153,6 +163,8 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (1.8.2)
+    request_store (1.5.0)
+      rack (>= 1.4)
     rspec-core (3.10.0)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.0)
@@ -200,14 +212,11 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    timeliness (0.4.4)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
-    validates_timeliness (4.1.1)
-      timeliness (>= 0.3.10, < 1)
     web-console (4.1.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -236,6 +245,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   cpf_cnpj
+  draper
   factory_bot_rails
   faker
   jbuilder (~> 2.7)
@@ -252,7 +262,6 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
   tzinfo-data
-  validates_timeliness
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)

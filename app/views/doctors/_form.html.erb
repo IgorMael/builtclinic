@@ -2,7 +2,7 @@
   <%= form_with(model: doctor, local: true, class: 'col s12') do |form| %>
     <div class="row">
       <div class="input-field col s6">
-        <%= form.text_field :name, class: "validate", required: true %>
+        <%= form.text_field :name, class: "validate" ,required: true %>
         <label for="doctor_name">Nome completo</label>
       </div>
     </div>
@@ -18,3 +18,6 @@
     </div>
   <% end %>
 </div>
+<script>
+  M.updateTextFields();
+</script>
