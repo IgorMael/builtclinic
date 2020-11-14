@@ -1,15 +1,10 @@
 class PatientsController < ApplicationController
-  before_action :set_patient, only: [:show, :edit, :update, :destroy]
+  before_action :set_patient, only: [:edit, :update, :destroy]
 
   # GET /patients
   # GET /patients.json
   def index
     @patients = Patient.all.decorate
-  end
-
-  # GET /patients/1
-  # GET /patients/1.json
-  def show
   end
 
   # GET /patients/new
@@ -28,7 +23,7 @@ class PatientsController < ApplicationController
 
     respond_to do |format|
       if @patient.save
-        format.html { redirect_to @patient, notice: 'Patient was successfully created.' }
+        format.html { redirect_to patients_path, notice: 'Cadastro realizado com sucesso.' }
       else
         format.html { render :new }
       end
@@ -40,7 +35,7 @@ class PatientsController < ApplicationController
   def update
     respond_to do |format|
       if @patient.update(patient_params)
-        format.html { redirect_to @patient, notice: 'Patient was successfully updated.' }
+        format.html { redirect_to patients_path, notice: 'Cadastro atualizado com sucesso.' }
       else
         format.html { render :edit }
       end
@@ -52,14 +47,14 @@ class PatientsController < ApplicationController
   def destroy
     @patient.destroy
     respond_to do |format|
-      format.html { redirect_to patients_url, notice: 'Patient was successfully destroyed.' }
+      format.html { redirect_to patients_path, notice: 'Cadastro excluído com sucesso.' }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_patient
-      @patient = Patient.find(params[:id])
+      @patient = Patient.find(params[:id]).decorate
     end
 
     # Only allow a list of trusted parameters through.

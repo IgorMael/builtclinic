@@ -4,7 +4,6 @@ RSpec.describe Appointment, type: :model do
   describe "required attributes" do
     subject { build(:appointment) }
 
-    it { should validate_presence_of(:starts_at) }
     it { should validate_uniqueness_of(:starts_at).scoped_to(:doctor_id) }
     it { should validate_presence_of(:ends_at) }
     it { should validate_presence_of(:doctor) }

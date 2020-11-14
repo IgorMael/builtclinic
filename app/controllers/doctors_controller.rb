@@ -1,17 +1,11 @@
 class DoctorsController < ApplicationController
-  before_action :set_doctor, only: [:show, :edit, :update, :destroy]
+  before_action :set_doctor, only: [:edit, :update, :destroy]
 
   # GET /doctors
   # GET /doctors.json
   def index
     @doctors = Doctor.all.decorate
   end
-
-  # GET /doctors/1
-  # GET /doctors/1.json
-  def show
-  end
-
   # GET /doctors/new
   def new
     @doctor = Doctor.new
@@ -28,7 +22,7 @@ class DoctorsController < ApplicationController
 
     respond_to do |format|
       if @doctor.save
-        format.html { redirect_to @doctor, notice: 'Doctor was successfully created.' }
+        format.html { redirect_to doctors_path, notice: 'Cadastro realizado com sucesso.' }
       else
         format.html { render :new }
       end
@@ -40,7 +34,7 @@ class DoctorsController < ApplicationController
   def update
     respond_to do |format|
       if @doctor.update(doctor_params)
-        format.html { redirect_to @doctor, notice: 'Doctor was successfully updated.' }
+        format.html { redirect_to doctors_path, notice: 'Cadastro atualizado com sucesso.' }
       else
         format.html { render :edit }
       end
@@ -52,7 +46,7 @@ class DoctorsController < ApplicationController
   def destroy
     @doctor.destroy
     respond_to do |format|
-      format.html { redirect_to doctors_url, notice: 'Doctor was successfully destroyed.' }
+      format.html { redirect_to doctors_path, notice: 'Cadastro excluído com sucesso.' }
     end
   end
 

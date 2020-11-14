@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "patients/index", type: :view do
   before(:each) do
     assign(:patients, [
-      Patient.create!(),
-      Patient.create!()
+      create(:patient).decorate,
+      create(:patient).decorate,
     ])
   end
 

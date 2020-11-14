@@ -3,11 +3,6 @@
   <td><%= patient.birth_date.strftime("%d/%m/%Y") %></td>
   <td><%= patient.cpf_formatted %></td>
   <td>
-    <%= link_to patient, 
-        class: 'btn waves-effect waves-light btn-small icon-button tooltipped', 
-        data: { position: 'top', tooltip: 'Visualizar' } do %>
-      <i class="material-icons">visibility</i>
-    <% end %>
     <%= link_to edit_patient_path(patient), 
         class: 'btn waves-effect waves-light btn-small icon-button tooltipped', 
         data: { position: 'top', tooltip: 'Editar' } do %>

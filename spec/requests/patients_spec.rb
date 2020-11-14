@@ -31,14 +31,6 @@ RSpec.describe "/patients", type: :request do
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
-      patient = Patient.create! valid_attributes
-      get patient_url(patient)
-      expect(response).to be_successful
-    end
-  end
-
   describe "GET /new" do
     it "renders a successful response" do
       get new_patient_url

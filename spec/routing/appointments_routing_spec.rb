@@ -10,10 +10,6 @@ RSpec.describe AppointmentsController, type: :routing do
       expect(get: "/appointments/new").to route_to("appointments#new")
     end
 
-    it "routes to #show" do
-      expect(get: "/appointments/1").to route_to("appointments#show", id: "1")
-    end
-
     it "routes to #edit" do
       expect(get: "/appointments/1/edit").to route_to("appointments#edit", id: "1")
     end

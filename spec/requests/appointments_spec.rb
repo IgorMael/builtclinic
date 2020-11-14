@@ -30,15 +30,6 @@ RSpec.describe "/appointments", type: :request do
       expect(response).to be_successful
     end
   end
-
-  describe "GET /show" do
-    it "renders a successful response" do
-      appointment = Appointment.create! valid_attributes
-      get appointment_url(appointment)
-      expect(response).to be_successful
-    end
-  end
-
   describe "GET /new" do
     it "renders a successful response" do
       get new_appointment_url

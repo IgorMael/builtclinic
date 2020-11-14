@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "doctors/edit", type: :view do
   before(:each) do
-    @doctor = assign(:doctor, Doctor.create!())
+    @doctor = create(:doctor).decorate
   end
 
   it "renders the edit doctor form" do

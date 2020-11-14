@@ -4,11 +4,6 @@
   <td><%= appointment.doctor.decorate.title_name %></td>
   <td><%= appointment.patient.name %></td>
   <td>
-    <%= link_to appointment_path(appointment), 
-        class: 'btn waves-effect waves-light btn-small icon-button tooltipped', 
-        data: { position: 'top', tooltip: 'Visualizar' } do %>
-      <i class="material-icons">visibility</i>
-    <% end %>
     <%= link_to edit_appointment_path(appointment), 
         class: 'btn waves-effect waves-light btn-small icon-button tooltipped', 
         data: { position: 'top', tooltip: 'Editar' } do %>
