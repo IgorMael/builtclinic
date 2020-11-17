@@ -1,24 +1,63 @@
-# README
+# Builtclinic
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Uma aplicação web para gerenciamento de consultas médicas
 
-Things you may want to cover:
+## Intruções
 
-* Ruby version
+Primeiramente, é necessário clonar o repositório localmente:
+```shell
+git clone https://github.com/IgorMael/builtclinic.git
+```
+Acessar o diretório
+```shell
+cd builtclinic
+```
+Em seguida, existe duas formas de executar o sistema. Atráves do Docker, ou instalando localmente.
 
-* System dependencies
+### DOCKER
 
-* Configuration
 
-* Database creation
+Monta os containers
+```shell
+docker-compose build
+```
+Cria e prepara o banco de dados para a aplicação
+```shell
+docker-compose run web rails db:create db:migrate
+```
 
-* Database initialization
+Inicializa a aplicação
+```shell
+docker-compose up
+```
+A aplicação pode ser acessada pelo navegador na página [localhost:3000](http://localhost:3000)
+Em sistemas Unix, pode ser necessário garantir permissão para alteração de arquivos. Você pode fazer isso com o comando
+```shell
+sudo chown -R $USER:$USER .
+```
 
-* How to run the test suite
+Caso seja necessário alterar as portas padrões da aplicação, é possível fazer isso no arquivo docker-compose.yml, raiz do projeto.
 
-* Services (job queues, cache servers, search engines, etc.)
+### Instalação local
+* É necessário ter Mysql e Ruby 2.7 instalados como pré-requisito
+```shell
+bundle install
+```
 
-* Deployment instructions
+Alterar o arquivo *database.yml* com o host, username e senha de seu banco de dados.
+Cria e prepara o banco de dados para a aplicação
+```shell
+rails db:create db:migrate
+```
 
-* ...
+Inicializa a aplicação
+```shell
+rails s
+```
+A aplicação pode ser acessada pelo navegador na página [localhost:3000](http://localhost:3000)
+
+## Testes
+O testes podem ser executados com o comando
+```shell
+rspec
+```
