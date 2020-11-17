@@ -21,6 +21,13 @@ Monta os containers
 ```shell
 docker-compose build
 ```
+
+Instalar os pacotes do yarn
+```shell
+docker-compose run web yarn install --check-files
+```
+
+
 Cria e prepara o banco de dados para a aplicação
 ```shell
 docker-compose run web rails db:create db:migrate
@@ -39,9 +46,14 @@ sudo chown -R $USER:$USER .
 Caso seja necessário alterar as portas padrões da aplicação, é possível fazer isso no arquivo docker-compose.yml, raiz do projeto.
 
 ### Instalação local
-* É necessário ter Mysql e Ruby 2.7 instalados como pré-requisito
+* É necessário ter Mysql, yarn e Ruby 2.7 instalados como pré-requisito
 ```shell
 bundle install
+```
+
+Instalar os pacotes Yarn
+```
+yarn install --check-files
 ```
 
 Alterar o arquivo *database.yml* com o host, username e senha de seu banco de dados.
