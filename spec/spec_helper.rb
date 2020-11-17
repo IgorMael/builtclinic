@@ -13,6 +13,8 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'simplecov'
+SimpleCov.start
 require 'support/factory_bot'
 RSpec.configure do |config|
   config.before(:suite) do

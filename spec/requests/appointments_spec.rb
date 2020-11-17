@@ -16,24 +16,28 @@ RSpec.describe "/appointments", type: :request do
   # Appointment. As you add validations to Appointment, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    doctor = create(:doctor)
+    patient = create(:patient)
+    FactoryBot.build(:appointment, patient_id: patient.id, doctor_id: doctor.id).attributes
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    FactoryBot.build(:appointment).attributes
   }
 
   describe "GET /index" do
     it "renders a successful response" do
-      Appointment.create! valid_attributes
       get appointments_url
       expect(response).to be_successful
     end
   end
+
   describe "GET /new" do
     it "renders a successful response" do
       get new_appointment_url
+      # expect(response).to render_template(:new)
       expect(response).to be_successful
+      expect(response).to render_template(:new)
     end
   end
 
@@ -55,7 +59,7 @@ RSpec.describe "/appointments", type: :request do
 
       it "redirects to the created appointment" do
         post appointments_url, params: { appointment: valid_attributes }
-        expect(response).to redirect_to(appointment_url(Appointment.last))
+        expect(response).to redirect_to(appointments_url)
       end
     end
 
@@ -76,21 +80,23 @@ RSpec.describe "/appointments", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        doctor2 = create(:doctor)
+        patient2 = create(:patient)
+        FactoryBot.build(:appointment, doctor_id: doctor2.id, patient_id: patient2.id).attributes
       }
 
       it "updates the requested appointment" do
         appointment = Appointment.create! valid_attributes
         patch appointment_url(appointment), params: { appointment: new_attributes }
         appointment.reload
-        skip("Add assertions for updated state")
       end
 
       it "redirects to the appointment" do
         appointment = Appointment.create! valid_attributes
         patch appointment_url(appointment), params: { appointment: new_attributes }
         appointment.reload
-        expect(response).to redirect_to(appointment_url(appointment))
+
+        expect(response).to redirect_to(appointments_url)
       end
     end
 

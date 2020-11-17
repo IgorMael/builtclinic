@@ -16,11 +16,11 @@ RSpec.describe "/doctors", type: :request do
   # Doctor. As you add validations to Doctor, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    FactoryBot.attributes_for(:doctor)
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    FactoryBot.attributes_for(:doctor, name: nil)
   }
 
   describe "GET /index" do
@@ -56,7 +56,7 @@ RSpec.describe "/doctors", type: :request do
 
       it "redirects to the created doctor" do
         post doctors_url, params: { doctor: valid_attributes }
-        expect(response).to redirect_to(doctor_url(Doctor.last))
+        expect(response).to redirect_to(doctors_url)
       end
     end
 
@@ -77,13 +77,14 @@ RSpec.describe "/doctors", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        build(:doctor, name: 'new name').attributes
       }
 
       it "updates the requested doctor" do
         doctor = Doctor.create! valid_attributes
         patch doctor_url(doctor), params: { doctor: new_attributes }
         doctor.reload
+        expect(doctor.name).to eq('new name')
         skip("Add assertions for updated state")
       end
 
@@ -91,7 +92,7 @@ RSpec.describe "/doctors", type: :request do
         doctor = Doctor.create! valid_attributes
         patch doctor_url(doctor), params: { doctor: new_attributes }
         doctor.reload
-        expect(response).to redirect_to(doctor_url(doctor))
+        expect(response).to redirect_to(doctors_url)
       end
     end
 

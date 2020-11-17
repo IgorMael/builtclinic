@@ -16,16 +16,15 @@ RSpec.describe "/patients", type: :request do
   # Patient. As you add validations to Patient, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    FactoryBot.attributes_for(:patient)
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    FactoryBot.attributes_for(:patient, name: nil)
   }
 
   describe "GET /index" do
     it "renders a successful response" do
-      Patient.create! valid_attributes
       get patients_url
       expect(response).to be_successful
     end
@@ -56,7 +55,7 @@ RSpec.describe "/patients", type: :request do
 
       it "redirects to the created patient" do
         post patients_url, params: { patient: valid_attributes }
-        expect(response).to redirect_to(patient_url(Patient.last))
+        expect(response).to redirect_to(patients_url)
       end
     end
 
@@ -77,13 +76,14 @@ RSpec.describe "/patients", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        FactoryBot.attributes_for(:patient, name: 'new name')
       }
 
       it "updates the requested patient" do
         patient = Patient.create! valid_attributes
         patch patient_url(patient), params: { patient: new_attributes }
         patient.reload
+        expect(patient.name).to eq('new name')
         skip("Add assertions for updated state")
       end
 
@@ -91,7 +91,7 @@ RSpec.describe "/patients", type: :request do
         patient = Patient.create! valid_attributes
         patch patient_url(patient), params: { patient: new_attributes }
         patient.reload
-        expect(response).to redirect_to(patient_url(patient))
+        expect(response).to redirect_to(patients_url)
       end
     end
 

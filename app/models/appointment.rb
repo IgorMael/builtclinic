@@ -12,6 +12,7 @@ class Appointment < ApplicationRecord
   def starts_at=(start_date)
     return unless start_date.present?
     start_date = DateTime.new(*start_date.sort.to_h.values.map(&:to_i)) if start_date.is_a? Hash
+    start_date = start_date.to_time if start_date.is_a? String
     super(start_date) if start_date.present?
     self.ends_at = start_date + 30.minutes
   end

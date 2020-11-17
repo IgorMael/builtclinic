@@ -20,7 +20,6 @@ class AppointmentsController < ApplicationController
   # POST /appointments.json
   def create
     @appointment = Appointment.new(appointment_params)
-
     respond_to do |format|
       if @appointment.save
         format.html { redirect_to appointments_path, notice: 'Cadastro realizado com sucesso.' }
