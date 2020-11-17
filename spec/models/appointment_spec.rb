@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Appointment, type: :model do
-  describe "required attributes" do
+  describe 'required attributes' do
     subject { build(:appointment) }
 
     it { should validate_uniqueness_of(:starts_at).scoped_to(:doctor_id) }

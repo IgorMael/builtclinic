@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class PatientsController < ApplicationController
-  before_action :set_patient, only: [:edit, :update, :destroy]
+  before_action :set_patient, only: %i[edit update destroy]
 
   # GET /patients
   # GET /patients.json
@@ -13,8 +15,7 @@ class PatientsController < ApplicationController
   end
 
   # GET /patients/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /patients
   # POST /patients.json
@@ -52,13 +53,14 @@ class PatientsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_patient
-      @patient = Patient.find(params[:id]).decorate
-    end
 
-    # Only allow a list of trusted parameters through.
-    def patient_params
-      params.require(:patient).permit(:name, :birth_date, :cpf)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_patient
+    @patient = Patient.find(params[:id]).decorate
+  end
+
+  # Only allow a list of trusted parameters through.
+  def patient_params
+    params.require(:patient).permit(:name, :birth_date, :cpf)
+  end
 end

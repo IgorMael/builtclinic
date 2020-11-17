@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateDoctors < ActiveRecord::Migration[6.0]
   def change
     create_table :doctors do |t|
@@ -7,6 +9,6 @@ class CreateDoctors < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    add_index :doctors, [:crm, :crm_uf], unique: true
+    add_index :doctors, %i[crm crm_uf], unique: true
   end
 end
