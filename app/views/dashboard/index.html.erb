@@ -1,26 +1,23 @@
 <div class="row" id="dashboard">
-    <h1>Dashboard</h1>
-    <%= form_with local: true, method: :get do |f| %>
-        <%= f.select "doctor",
-            options_from_collection_for_select(Doctor.all.decorate, 'id', 'title_name',  @doctor&.id),
-            include_blank: "Todos os médicos" %>
-        <%= f.submit 'Buscar' %>
-    <% end %>
-    <div id="data">
-        <div class="row">
-            <div class="col s12 m3">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text center-align">
-                        <span class="card-title">Consultas realizadas</span>
-                        <span class="center-align"> <%= @appointments %> Consultas</span>
+    <div class="col s12">
+        <h1>Dashboard</h1>
+            <%= render 'dashboard/search' %>
+        <div id="data">
+            <div class="row">
+                <div class="col s12 m3">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text center-align">
+                            <span class="card-title">Consultas realizadas</span>
+                            <span class="center-align"> <%= @appointments %> Consultas</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col s12 m3">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text center-align">
-                        <span class="card-title">Pacientes atendidos</span>
-                        <span class="center-align"> <%=  @consulted_patients %> Pacientes</span>
+                <div class="col s12 m3">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text center-align">
+                            <span class="card-title">Pacientes atendidos</span>
+                            <span class="center-align"> <%=  @consulted_patients %> Pacientes</span>
+                        </div>
                     </div>
                 </div>
             </div>

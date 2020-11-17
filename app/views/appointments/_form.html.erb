@@ -25,7 +25,8 @@
         </div>
     </div>
     <div class="actions">
-      <%= form.submit %>
+      <%= link_to 'Voltar', appointments_path, class: 'btn-flat' %>
+      <%= form.submit 'Cadastrar', class: 'btn' %>
     </div>
   <% end %>
 </div>

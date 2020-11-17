@@ -26,19 +26,13 @@
       </div>
       <div class="input-field col s3 active">
         <%= form.date_field :birth_date, class: "validate ", required: true, value: Date.today %>
-        <label for="patient_birth_date" id='lol' class="active">Data de nascimento</label>
+        <label for="patient_birth_date" class="active">Data de nascimento</label>
       </div>
     </div>
 
-
     <div class="actions">
-      <%= form.submit %>
+      <%= link_to 'Voltar', patients_path, class: 'btn-flat' %>
+      <%= form.submit 'Cadastrar', class: 'btn' %>
     </div>
   <% end %>
 </div>
-
-<script>
-  var element = document.getElementById("lol");
-  element.classList.add("active");
-  console.log('lol')
-</script>
