@@ -1,4 +1,16 @@
 <div class='row'>
+  <% if doctor.errors.any? %>
+    <div id="error_explanation">
+        <h5><%= pluralize(doctor.errors.count, "erro") %> no formulário:</h5>
+
+      <ul>
+        <% doctor.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= form_with(model: doctor, local: true, class: 'col s12') do |form| %>
     <div class="row">
       <div class="input-field col s6">
