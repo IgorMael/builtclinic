@@ -46,9 +46,12 @@ class DoctorsController < ApplicationController
   # DELETE /doctors/1
   # DELETE /doctors/1.json
   def destroy
-    @doctor.destroy
     respond_to do |format|
-      format.html { redirect_to doctors_path, notice: 'Cadastro excluído com sucesso.' }
+      if @doctor.destroy
+        format.html { redirect_to doctors_path, notice: 'Cadastro excluído com sucesso.' }
+      else
+        format.html { redirect_to doctors_path, notice: 'O médico possui pacientes vinculados.' }
+      end
     end
   end
 
