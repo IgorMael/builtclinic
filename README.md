@@ -4,7 +4,7 @@ Uma aplicação web para gerenciamento de consultas médicas
 
 ## Intruções
 
-Primeiramente, é necessário clonar o repositório localmente:
+- Primeiramente, é necessário clonar o repositório localmente:
 ```shell
 git clone https://github.com/IgorMael/builtclinic.git
 ```
